@@ -6,6 +6,7 @@ import urllib
 from flask import Flask, request
 from textwrap import dedent
 
+# For OwnTracks app, set Mode to HTTP and URL to [server IP], port 5000. IE: http://192.168.1.10:5000/
 # KML Template
 HEADER = """\
 <?xml version="1.0" encoding="UTF-8"?>
@@ -37,7 +38,7 @@ def owntracks():
     print(req_data) # useful for debugging
     device_id = req_data["topic"].split("/")[2]
 
-    with open("E:\\owntracks.kml", "w") as f:
+    with open("E:\\owntracks.kml", "w") as f: # Map to your local drive
 
         f.write(dedent(HEADER))
         lat = req_data["lat"]
